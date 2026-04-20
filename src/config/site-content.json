@@ -5,7 +5,7 @@
 		"username": "Luca"
 	},
 	"theme": {
-		"colorBrand": "#2fcbe7",
+		"colorBrand": "#2CB496",
 		"colorPrimary": "#5B423F",
 		"colorSecondary": "#8b7667",
 		"colorBrandSecondary": "#eec25e",
@@ -15,9 +15,12 @@
 		"colorArticle": "#ffffffcc"
 	},
 	"backgroundColors": [
-		"#f7da3987",
-		"#8fdbe9",
-		"#fffef8"
+		"#2779B6",
+		"#082659",
+		"#14BDCD",
+		"#4094FB",
+		"#E40161",
+		"#FF9611"
 	],
 	"artImages": [
 		{
