@@ -5,7 +5,7 @@
 		"username": "Luca"
 	},
 	"theme": {
-		"colorBrand": "#2CB496",
+		"colorBrand": "#2fcbe7",
 		"colorPrimary": "#5B423F",
 		"colorSecondary": "#8b7667",
 		"colorBrandSecondary": "#eec25e",
@@ -15,12 +15,9 @@
 		"colorArticle": "#ffffffcc"
 	},
 	"backgroundColors": [
-		"#2779B6",
-		"#082659",
-		"#14BDCD",
-		"#4094FB",
-		"#E40161",
-		"#FF9611"
+		"#f7da3987",
+		"#8fdbe9",
+		"#fffef8"
 	],
 	"artImages": [
 		{
@@ -55,14 +52,14 @@
 		{
 			"id": "github",
 			"type": "github",
-			"value": "https://github.com/yysuni",
+			"value": "https://github.com/LucaAnd2024",
 			"label": "Github",
 			"order": 2
 		},
 		{
 			"id": "juejin",
 			"type": "qq",
-			"value": "/images/social-buttons/dba3d231c09c2182.jpg",
+			"value": "2339811557",
 			"label": "稀土掘金",
 			"order": 3
 		}
