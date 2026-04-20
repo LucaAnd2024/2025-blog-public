@@ -91,6 +91,24 @@ export default function Page() {
 			</motion.button>
 
 			{slug === 'liquid-grass' && <LiquidGrass />}
+
+			{/* Giscus 留言模块 */}
+			<script
+				src="https://giscus.app/client.js"
+				data-repo="LucaAnd2024/2025-blog-public"
+				data-repo-id="R_kgDOSHPODQ"
+				data-category="Announcements"
+				data-category-id="DIC_kwDOSHPODc4C7QtY"
+				data-mapping="pathname"
+				data-strict="0"
+				data-reactions-enabled="1"
+				data-emit-metadata="0"
+				data-input-position="bottom"
+				data-theme="preferred_color_scheme"
+				data-lang="zh-CN"
+				crossOrigin="anonymous"
+				async
+			/>
 		</>
 	)
 }
