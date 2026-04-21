@@ -3,7 +3,7 @@
 		"name": "小红书保研情报追踪机器人",
 		"year": 2026,
 		"description": "基于 MCP + 小红书 API 的自动化情报追踪脚本，每天定时搜索保研相关关键词和目标博主，将最新帖子推送到 Telegram。正在持续优化中。",
-		"image": "",
+		"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2O2SdDBRnTqVx0QWCAw9E-6AKOKSJUIjatg&s",
 		"url": "https://github.com/LucaAnd2024/xhs-baoyan-bot",
 		"tags": [
 			"Python",
@@ -16,9 +16,9 @@
 	},
 	{
 		"name": "小亮的博客",
-		"year": 2025,
+		"year": 2026,
 		"description": "基于 Next.js + GitHub API 的无后端博客系统，文章直接通过可视化编辑器提交到 GitHub 仓库。正在使用中。",
-		"image": "",
+		"image": "/images/project/dba3d231c09c2182.jpg",
 		"url": "https://luca-wiki.tech",
 		"tags": [
 			"Next.js",
