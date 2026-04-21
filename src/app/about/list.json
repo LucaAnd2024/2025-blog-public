@@ -1,5 +1,5 @@
 {
-	"title": "关于本站",
-	"description": "一个基于 Github 的现代化博客系统",
-	"content": "📦网站基于 Github 仓库完全存储，所有内容版本可控\n\n🚀无后端，无 serverless function，纯静态站点\n\n✏️文章通过可视化 UI 直接编辑并提交到 Github 仓库\n\n🔑所有用户都可以编辑，提交需要 Owner 的 Private Key\n\n## 技术栈\n\n- Next.js\n- React\n- TypeScript\n- Tailwind CSS\n- Motion\n- Github API"
+	"title": "关于小亮",
+	"description": "数字媒体技术本科生 · 计算机视觉学习者",
+	"content": "## 你好 👋\n\n我是小亮，一名数字媒体技术专业的本科生，正在为厦门大学 MAC 实验室的面试做准备。\n\n## 研究兴趣\n\n- 计算机视觉（Computer Vision）\n- 神经网络架构搜索（NAS）\n- 模型压缩（Model Compression）\n- 自动机器学习（AutoML）\n\n## 技术栈\n\n- Python / PyTorch\n- Next.js / React / TypeScript\n- 一点点机器学习基础，正在系统学习中\n\n## 关于这个博客\n\n这里记录我的学习笔记、技术探索和碎碎念。搭建这个博客的过程本身也是一次有趣的学习经历——从零到上线，折腾了不少东西。\n\n## 联系方式\n\n- GitHub：[LucaAnd2024](https://github.com/LucaAnd2024)\n- 邮箱：2339811557@qq.com"
 }
