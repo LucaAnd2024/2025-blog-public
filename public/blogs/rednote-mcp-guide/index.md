@@ -252,7 +252,7 @@ if __name__ == "__main__":
     main()
 ```
 
-完整代码较长，完整版存放在 [GitHub](https://github.com/LucaAnd2024/2025-blog-public)。
+完整代码在 GitHub 仓库：[LucaAnd2024/xhs-baoyan-bot](https://github.com/LucaAnd2024/xhs-baoyan-bot)
 
 ---
 
@@ -288,5 +288,5 @@ if __name__ == "__main__":
 ## 参考链接
 
 - [rednote-mcp (iFurySt)](https://github.com/iFurySt/RedNote-MCP)
-- [小红书 MCP 研究笔记](./watch-bloggers)
-- Hermes Agent 文档
+- [xpzouying/xiaohongshu-mcp (Go版)](https://github.com/xpzouying/xiaohongshu-mcp)
+- [xhs-baoyan-bot 脚本仓库](https://github.com/LucaAnd2024/xhs-baoyan-bot)
