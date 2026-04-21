@@ -14,5 +14,21 @@
     "cover": "",
     "hidden": false,
     "category": ""
+  },
+  {
+    "slug": "create-blog-guide",
+    "title": "从零开始：5分钟搭建一个支持在线编辑的 GitHub 博客",
+    "tags": [
+      "GitHub",
+      "Vercel",
+      "Next.js",
+      "博客",
+      "教程"
+    ],
+    "date": "2026-04-21T12:00",
+    "summary": "详细记录使用 YYsuni/2025-blog-public 框架从零搭建个人博客的全过程，包括 GitHub App 创建、Vercel 部署、域名绑定和在线编辑配置。",
+    "cover": "",
+    "hidden": false,
+    "category": ""
   }
 ]
