@@ -1,122 +1,228 @@
-# Obsidian 知识库搭建笔记：从零到好看又好用
+# Obsidian 知识库搭建笔记：从零到好看好用
 
-> 本文目标：任何人读完这篇文章，都能从零搭建起一套自己的课程笔记知识库。
+> 本手册目标：任何人把本文丢进 Hermes 或 OpenClaw 后，能独立搭建起一套完整的课程笔记知识库。
 >
-> 适用场景：机器学习/深度学习课程笔记管理。方法论通用，可迁移到任何学科。
+> 核心理念：**先找到能力，再采集素材，再处理内容，最后沉淀成可复用、可追溯、可继续扩展的知识资产。**
 
 ---
 
-## 1. 这个知识库是什么
+## 一、这个系统是什么，解决什么问题
 
-一套基于 Obsidian 的**课程笔记管理系统**，核心解决三个问题：
+这套知识库解决三个实际问题：
 
-- **来源杂** — 课程来自 YouTube、B 站、论文，怎么统一管理
-- **格式乱** — 字幕是 VTT 格式，课堂是 Markdown，散落在各处
-- **用不起来** — 记完就忘，复习时找不到，回头想引用不知道在哪
+1. **来源散** — 课程来自 YouTube、B 站、论文，素材格式各异（VTT 字幕、PDF、网页），统一入口管理
+2. **用不起来** — 记完就忘，复习时找不到，想引用不知道在哪
+3. **无法积累** — 每学完一门课笔记就堆在那，下次捡起来成本极高
 
-解决方案：统一格式、统一流程、统一入口。
+解决方案：用一套**固定的工作流程**处理所有素材，用 **Obsidian** 管理，用 **Hermes** 驱动。
 
 ---
 
-## 2. 目录结构
+## 二、先把 Hermes 跑起来
+
+### 2.1 安装 Hermes
+
+参考官方文档：[https://hermes-agent.nousresearch.com/docs/](https://hermes-agent.nousresearch.com/docs/)
+
+安装完成后，启动 Hermes（确保模型配置好，推荐 MiniMax 或 Claude）。
+
+### 2.2 验证 Hermes 可用
+
+在对话里输入：
 
 ```
-luca-wiki/（知识库根目录）
-├── courses/                    # 课程笔记（核心内容）
-│   ├── ML2021-L01-machine-learning-basics.md
-│   ├── ML2021-L02-deeplearning-basics.md
-│   └── CS231N-2025-L01-introduction.md
-├── concepts/                   # 独立概念卡片（可跨课程引用）
-│   ├── backpropagation.md
-│   └── attention-mechanism.md
-├── raw/                        # 原始素材（不改）
-│   ├── transcripts/            # 字幕文件
-│   └── articles/               # 收集的参考文章
-├── .obsidian/                  # Obsidian 配置（版本控制）
-│   └── snippets/
-│       └── ml2021-theme.css   # 自定义主题
-├── _templates/                 # Templater 模板
-│   └── course-note.md
-└── SCHEMA.md                  # 字段规范文档
+你好，你现在是谁
 ```
 
----
-
-## 3. 快速开始
-
-### 3.1 安装 Obsidian
-
-下载：[obsidian.md](https://obsidian.md/download)
-
-打开后选择「打开本地仓库」，选中 `luca-wiki/` 文件夹即可。
-
-### 3.2 安装必要插件
-
-Obsidian → 设置 → 社区插件 → 关闭安全模式 → 浏览
-
-安装以下两个插件：
-
-**Templater**（模板引擎）
-- 启用后：设置 → Templater → 模板文件夹位置 → 选择 `_templates/`
-- 作用：新建笔记时自动填充标准化 frontmatter
-
-**Dataview**（数据查询）
-- 启用后：设置 → Dataview → 勾选「启用 JavaScript 查询」
-- 作用：在任意笔记里写查询语句，动态显示笔记列表/统计数据
-
-### 3.3 启用 CSS 主题
-
-设置 → 外观 → CSS 代码片段 → 启用 `ml2021-theme.css`
-
-主题效果：深色 Tokyo Night 配色，自定义表格样式，代码高亮。
+如果正常回复，说明 Hermes 跑通了，可以进入下一步。
 
 ---
 
-## 4. 核心工作流程：处理一个新视频
+## 三、用 Hermes 初始化知识库
 
-假设你有一个 YouTube 视频链接，想把它变成一条结构化笔记。
+这一步是核心——把下面的提示词丢给 Hermes，它会自动创建完整的目录结构和所有配置文件。
 
-### Step 1：下载字幕
+### 3.1 初始化提示词
+
+**复制下面的全部内容，发给 Hermes：**
+
+```
+请帮我初始化一个 LLM Wiki，路径是：
+`~/obsidian/luca-wiki`
+
+目标：
+- 用 Obsidian 可直接打开和维护
+- 建立可持续迭代的知识库，不是一次性笔记仓库
+
+请按下面要求执行：
+
+1) 创建目录结构
+- `raw/articles`
+- `raw/papers`
+- `raw/transcripts`
+- `raw/assets`
+- `entities`
+- `concepts`
+- `comparisons`
+- `queries`
+- `_templates`
+- `courses`
+
+2) 创建核心文件
+- `SCHEMA.md`
+- `index.md`
+- `README.md`
+
+3) 写 `SCHEMA.md`
+- 定义 Domain：机器学习 / 深度学习 / 计算机视觉（可扩展）
+- 定义 frontmatter 规范：title/created/updated/type/course/lecture/tags/sources
+- 定义 tag taxonomy（给 10-20 个基础标签）
+- 定义页面阈值（什么时候新建概念卡片，什么时候并入课程笔记）
+- 定义 update policy（冲突信息如何记录，不直接覆盖）
+
+4) 写 `index.md`
+- 写明知识库的定位和使用方法
+- 包含快速开始指南
+
+5) 写 `_templates/course-note.md`
+- 创建课程笔记模板，包含标准化 frontmatter
+- 使用 Templater 语法实现交互式创建
+
+完成后告诉我创建了哪些文件。
+```
+
+### 3.2 Hermes 会做什么
+
+它会自动：
+- 创建完整的目录结构
+- 写 `SCHEMA.md`（定义字段规范、标签体系、更新策略）
+- 写 `index.md`（知识库入口说明）
+- 写 `_templates/course-note.md`（笔记模板）
+
+### 3.3 用 Obsidian 打开
 
 ```bash
-# 安装 yt-dlp（macOS）
-brew install yt-dlp
+# 找到创建的文件夹路径
+open ~/obsidian/luca-wiki
+```
 
-# 下载字幕（跳过视频，只下字幕）
+Obsidian → 打开本地仓库 → 选中 `luca-wiki` 文件夹
+
+---
+
+## 四、安装 Obsidian 插件
+
+打开 Obsidian 后，安装以下两个插件：
+
+### Templater（模板引擎）
+
+1. 设置 → 社区插件 → 搜索「Templater」→ 安装 → 启用
+2. 设置 → Templater → 模板文件夹位置 → 选择 `_templates`
+
+作用：新建笔记时自动弹出对话框，填充 frontmatter 字段。
+
+### Dataview（数据查询）
+
+1. 设置 → 社区插件 → 搜索「Dataview」→ 安装 → 启用
+2. 设置 → Dataview → 勾选「启用 JavaScript 查询」
+
+作用：在任意笔记里写查询语句，动态显示笔记列表、进度统计。
+
+### 启用 CSS 主题（可选）
+
+Obsidian → 设置 → 外观 → CSS 代码片段 → 启用主题
+
+如果 Hermes 创建的主题不够用，可以自己写 CSS，或找我帮你写。
+
+---
+
+## 五、处理 YouTube 视频的完整工作流
+
+下面是把一个 YouTube 课程视频，变成一条结构化笔记的完整流程。
+
+### Step 1：用 yt-dlp 下载字幕
+
+**安装 yt-dlp（macOS）：**
+
+```bash
+brew install yt-dlp
+```
+
+**下载字幕：**
+
+```bash
+cd ~/Downloads
 yt-dlp --write-subs --skip-download --sub-langs "zh-TW,zh-CN,en" \
   -o "%(title)s.%(ext)s" "视频链接"
 ```
 
-常见选项：
-- `zh-TW`：繁体中文字幕
-- `zh-CN`：简体中文字幕
-- `en`：英文字幕
-- 如果中文字幕没有，Fallback 到英文字幕
+常用参数说明：
+- `--write-subs`：下载字幕
+- `--skip-download`：不下载视频，只下字幕
+- `--sub-langs "zh-TW,zh-CN,en"`：优先繁中 → 简中 → 英文字幕（中文字幕没有时自动降级）
 
-字幕会下载为 `.vtt` 文件，可以用任意文本编辑器打开。
+字幕文件下载为 `.vtt` 格式，保存在 `~/Downloads/`。
 
-### Step 2：整理笔记内容
+### Step 2：把字幕交给 Hermes 整理
 
-用 LLM（我）把字幕整理成结构化笔记，格式要求：
+**复制以下提示词，连同字幕文件一起发给 Hermes：**
 
-- **标题用中文**
-- **分点清晰**，每部分有明确主题
-- **保留关键公式**，用 LaTeX 或代码块
-- **去掉口语**：字幕里有很多「呃」「嗯」「这个」之类的语气词，整理时删除
-- **适当压缩**：45 分钟的课不可能变成 45 页笔记，提取核心概念和逻辑链
+```
+请帮我把这节课的字幕整理成 Obsidian 笔记。
 
-### Step 3：确定 frontmatter
+要求：
+1. 标题用中文，简洁，几个词
+2. 结构：简介 → 核心概念（3-5 个章节）→ 总结
+3. 每章有明确主题，不要按时间顺序流水账
+4. 保留关键公式，用代码块包裹 LaTeX
+5. 去掉口语词（"呃""嗯""这个"等）
+6. 45 分钟的课整理成 3-5 页 Markdown，不要太长
 
-每篇笔记顶部有一段 YAML 格式的元数据，叫 frontmatter。格式固定如下：
+文件命名格式：`{课程代码}-L{编号}-{简短标题}.md`
+例如：`ML2021-L01-machine-learning-basics.md`
 
-```yaml
+frontmatter 要求（放在笔记最顶部）：
 ---
-title: "课程名称或笔记标题"
+title: "标题"
 created: 2026-04-22
 updated: 2026-04-22
 type: course-note
-course: ML2021
-lecture: L01
+course: "课程代码"
+lecture: "L01"
+status: completed
+difficulty: medium
+tags:
+  - 标签1
+  - 标签2
+sources:
+  - "视频链接"
+---
+
+请先把整理好的 Markdown 内容发给我，我确认后你再写入文件。
+```
+
+### Step 3：Hermes 写入文件
+
+确认笔记内容无误后，告诉 Hermes：
+
+```
+内容没问题，请写入 `~/obsidian/luca-wiki/courses/{文件名}.md`
+```
+
+---
+
+## 六、frontmatter 字段规范（SCHEMA.md 核心内容）
+
+每篇笔记顶部的 YAML 元数据，格式固定：
+
+```yaml
+---
+title: "笔记标题"
+created: 2026-04-22
+updated: 2026-04-22
+type: course-note
+course: "ML2021"
+lecture: "L01"
 status: completed
 difficulty: medium
 tags:
@@ -124,11 +230,9 @@ tags:
   - computer-vision
   - ml2021
 sources:
-  - "YouTube 视频链接"
+  - "https://youtube.com/..."
 ---
 ```
-
-各字段含义：
 
 | 字段 | 必须 | 说明 | 示例 |
 |------|------|------|------|
@@ -138,69 +242,76 @@ sources:
 | `type` | ✅ | 固定值 | `course-note` |
 | `course` | ✅ | 课程代码 | `ML2021` |
 | `lecture` | ✅ | 讲次（补零） | `L01` |
-| `status` | ✅ | 笔记状态 | `completed` / `in-progress` |
-| `difficulty` | ✅ | 难度 | `easy` / `medium` / `hard` |
+| `status` | ✅ | 笔记状态 | `completed` |
+| `difficulty` | ✅ | 难度 | `easy/medium/hard` |
 | `tags` | ✅ | 标签数组 | `["cnn", "ml"]` |
 | `sources` | ✅ | 视频/资料链接 | `["链接"]` |
 
-### Step 4：文件命名规范
+**注意**：`lecture` 字段必须补零（L01 而不是 L1），否则 Dataview 按字母排序会把 L10 排在 L2 前面。
 
-格式：`{课程代码}-L{编号}-{简短标题}`
-
-规则：
-- 课程代码大写：`ML2021`、`CS231N-2025`
-- 讲次**补零**：`L01` `L02` ... `L16`（不补零的话 L10 会排在 L2 前面）
-- 标题用英文或拼音（方便搜索），简短，几个词
-
-示例：
-```
-ML2021-L01-machine-learning-basics.md
-ML2021-L09-cnn.md
-CS231N-2025-L04-neural-networks-backpropagation.md
-```
-
-### Step 5：用 Templater 创建笔记
-
-Obsidian 中按 `Cmd+N` 新建笔记 → Templater 会自动在顶部插入模板。
-
-模板内容（`/_templates/course-note.md`）：
-
-```markdown
 ---
-title: "<% tp.system.prompt("标题") %>"
-created: <% tp.date.now("YYYY-MM-DD") %>
-updated: <% tp.date.now("YYYY-MM-DD") %>
-type: course-note
-course: "<% tp.system.prompt("课程代码", "ML2021") %>"
-lecture: "<% tp.system.prompt("讲次（如 L01）") %>"
-status: in-progress
-difficulty: medium
+
+## 七、用 Hermes 补充内容
+
+### 7.1 添加概念卡片
+
+如果某个概念跨多门课出现（比如「反向传播」在 ML2021 和 CS231N 里都有），可以建一张独立概念卡片：
+
+**提示词：**
+
+```
+请帮我创建一个概念笔记，写入 `~/obsidian/luca-wiki/concepts/backpropagation.md`
+
+主题：反向传播（Backpropagation）
+要求：
+- 定义：是什么，用来干什么
+- 核心机制：链式法则、计算图
+- 前向 vs 反向的区别
+- 常见问题（梯度消失/爆炸）
+- 与课程笔记的交叉引用
+
+frontmatter：
+---
+title: "反向传播"
+created: 2026-04-22
+type: concept
 tags:
-  -
+  - deep-learning
+  - optimization
 sources:
-  -
+  - "ML2021 L4"
+  - "CS231N L4"
 ---
-
-# <% tp.system.prompt("笔记标题") %>
-
-## 简介
-
-## 核心内容
-
-## 总结
 ```
 
-模板里的 `tp.system.prompt()` 会弹出对话框让你输入，实现了 frontmatter 的交互式填充。
+### 7.2 更新已有笔记
+
+如果发现笔记有错误或需要补充：
+
+```
+请帮我更新 `~/obsidian/luca-wiki/courses/ML2021-L04-xxx.md`，
+在「激活函数」章节补充 Leaky ReLU 和 ELU 的内容。
+```
+
+### 7.3 查询知识库
+
+```
+请列出 `~/obsidian/luca-wiki/courses/` 下所有笔记的：
+- 文件名
+- 课程
+- 讲次
+- 状态
+
+按讲次排序。
+```
 
 ---
 
-## 5. Dataview 查询怎么用
+## 八、Dataview 查询示例
 
-Dataview 让你用类 SQL 的语法查询笔记库。
+在 Obsidian 任意笔记里创建代码块：
 
-### 基本查询
-
-在任意 `.md` 文件里新建代码块：
+**查看所有课程笔记：**
 
 ````markdown
 ```dataview
@@ -210,9 +321,7 @@ SORT file.name ASC
 ```
 ````
 
-效果：显示 `courses/` 文件夹下所有笔记的课程、讲次、状态、难度。
-
-### 按课程筛选
+**按课程筛选：**
 
 ````markdown
 ```dataview
@@ -223,125 +332,87 @@ SORT lecture ASC
 ```
 ````
 
-### 统计某课程的笔记数量
+**统计某课程的完成进度：**
 
 ````markdown
 ```dataview
-TABLE length(file.tasks) as tasks
+TABLE lecture, status
 FROM "courses"
-WHERE course = "ML2021"
+WHERE course = "CS231N-2025"
+SORT lecture ASC
 ```
 ````
 
-> **注意**：Dataview 对字段类型敏感。`lecture: "L01"` 是字符串，`SORT lecture ASC` 按字母顺序排，不是数字顺序。所以 lecture 必须补零（L01 而不是 L1）。
+> **常见问题**：如果 Dataview 显示"No results"，检查 `WHERE` 条件中的值是否和 frontmatter 里的实际值完全一致（包括大小写）。
 
 ---
 
-## 6. 自定义 CSS 主题怎么写
+## 九、目录结构说明
 
-Obsidian 的外观完全由 CSS 控制。在 `.obsidian/snippets/` 目录下放 `.css` 文件，Obsidian 会自动加载。
-
-### 修改表格样式
-
-```css
-/* 表格样式 */
-.markdown-source-view table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-.markdown-source-view th {
-  background: transparent;    /* 不要深色背景 */
-  border-bottom: 2px solid var(--background-modifier-border);
-  font-weight: 600;
-}
-
-.markdown-source-view td {
-  border-bottom: 1px solid var(--background-modifier-border);
-}
 ```
-
-### 修改 Callout（高亮块）样式
-
-```css
-/* 信息高亮 */
-.callout {
-  border-left: 3px solid #7aa2f7;
-  background: rgba(122, 162, 247, 0.1);
-}
-```
-
-### 深色主题配色参考（Tokyo Night）
-
-```css
---background-primary: #1a1b26;
---background-secondary: #1f2335;
---text-normal: #c0caf5;
---accent: #7aa2f7;         /* 蓝色 */
---accent-secondary: #bb9af7; /* 紫色 */
+luca-wiki/
+├── courses/                  # 课程笔记（按课程分目录）
+│   ├── ML2021-L01-xxx.md
+│   └── CS231N-2025-L01-xxx.md
+├── concepts/                 # 独立概念卡片（跨课程通用）
+│   ├── backpropagation.md
+│   └── attention-mechanism.md
+├── raw/                      # 原始素材（不改）
+│   ├── transcripts/          # VTT 字幕文件
+│   ├── articles/             # 收集的参考文章
+│   ├── papers/               # PDF 论文
+│   └── assets/               # 图片等资源
+├── _templates/               # Templater 模板
+│   └── course-note.md
+├── .obsidian/                # Obsidian 配置
+│   └── snippets/             # CSS 主题
+├── SCHEMA.md                 # 字段规范
+├── index.md                  # 知识库说明
+└── README.md                 # 项目说明
 ```
 
 ---
 
-## 7. 常见问题
+## 十、常见问题
 
-### Q: 视频没有字幕怎么办？
+**Q: 视频没有字幕怎么办？**
 
-两个方案：
+方案 1：用 Whisper 等工具语音转文字
+方案 2：告诉 Hermes 视频主题，让它直接写笔记（我处理 CS231N L4 时就是这样做的）
 
-1. 用 Whisper 等语音识别工具生成字幕（需要额外工具）
-2. 根据视频主题直接写笔记（我就是这样处理 CS231N L4 的）
+**Q: Dataview 显示"No results"？**
 
-### Q: 笔记写成 transcript 风格怎么办？
+检查两点：① `WHERE` 条件值是否和 frontmatter 一致；② `lecture` 是否补零（字母排序问题）
 
-字幕直接整理会变成口语化的流水账。正确姿势：
-- 提取核心概念，用自己的话重写
-- 按逻辑主题组织，不是按时间顺序
-- 45 分钟的课 → 3-5 个主题章节
-
-### Q: Dataview 显示 "No results"？
-
-检查两点：
-1. `WHERE` 条件是否正确（状态值拼写是否一致）
-2. `SORT lecture ASC` 对字符串无效，lecture 字段必须补零
-
-### Q: 怎么迁移到新电脑？
+**Q: 怎么迁移到新电脑？**
 
 ```bash
-# 克隆整个知识库
 git clone <your-repo-url> ~/obsidian/your-vault
+```
+然后 Obsidian 打开这个文件夹，所有配置、插件状态、模板全部一起同步。
 
-# Obsidian 打开这个文件夹
-# 插件、模板、CSS 全部在仓库里，一起同步过来
+**Q: Hermes 写文件权限不够？**
+
+确保 `~/obsidian/luca-wiki` 目录存在，且当前用户有读写权限：
+```bash
+mkdir -p ~/obsidian/luca-wiki
+chmod 755 ~/obsidian/luca-wiki
 ```
 
-所有配置都在 `.obsidian/` 目录和各个 `.md` 文件的 frontmatter 里，不需要额外导出。
-
 ---
 
-## 8. 扩展方向
-
-学完一门课后，知识库可以继续扩展：
-
-- **概念卡片**：`concepts/` 目录下建独立概念笔记，如 `backpropagation.md`、`attention.md`
-- **标签系统**：给笔记打标签，跨课程追踪某个概念（如 `backpropagation` 在 ML2021 和 CS231N 里都有）
-- **图谱视图**：Obsidian 有「局部图谱」和「全局图谱」插件，可以可视化概念之间的引用关系
-- **发表博客**：把 `courses/` 里的内容整理成博客文章，用博客框架发布到 Vercel
-
----
-
-## 9. 完整工具链总结
+## 十一、完整工具链
 
 | 步骤 | 工具 | 作用 |
 |------|------|------|
-| 视频下载字幕 | `yt-dlp` | 只下字幕，不下视频，节省空间 |
-| 笔记整理 | LLM（我） | 字幕 → 结构化 Markdown |
-| 笔记管理 | Obsidian | 本地编辑、搜索、图谱 |
-| 元数据查询 | Dataview | 按课程/标签/状态筛选笔记 |
-| 模板填充 | Templater | 新建笔记自动填充 frontmatter |
+| 初始化知识库 | Hermes + 提示词 | 一键创建目录结构 + SCHEMA |
+| 下载字幕 | `yt-dlp` | 只下字幕，不占空间 |
+| 整理笔记 | Hermes + 提示词 | 字幕 → 结构化 Markdown |
+| 管理笔记 | Obsidian | 本地编辑、搜索、图谱 |
+| 查询统计 | Dataview | 按课程/标签/状态筛选 |
+| 自动填充模板 | Templater | 新建笔记时弹出填充对话框 |
 | 样式定制 | CSS snippets | 表格、代码块、Callout 样式 |
-| 博客发布 | Vercel + Next.js | 把笔记变成公开博客 |
 
 ---
 
-> 这套方法论的核心不是工具，而是**流程标准化**：命名规范、元数据规范、文件组织规范。有了规范，工具才能发挥威力。
+> **核心理念**：先找到能力（Hermes 能做什么），再采集素材（yt-dlp 下字幕），再处理内容（整理成 Markdown），最后沉淀成资产（Obsidian 知识库）。走完一次完整流程，比知道一堆零散功能更重要。

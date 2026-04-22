@@ -4,7 +4,7 @@
     "title": "Obsidian 知识库搭建笔记：从零到好看好用",
     "tags": ["Obsidian", "知识管理", "Dataview", "机器学习"],
     "date": "2026-04-22T18:00",
-    "summary": "本文档是帮小亮搭建 Obsidian 知识库的完整手册，包含目录结构、yt-dlp 下载字幕流程、Templater 模板配置、Dataview 查询语法、CSS 主题定制、常见问题解答，以及完整工具链总结。任何人都可以照此从零搭建自己的课程笔记管理系统。",
+    "summary": "完整操作手册，包含： Hermes 初始化知识库提示词、yt-dlp 下载字幕流程、Obsidian 插件安装、frontmatter 字段规范、Dataview 查询语法、常见问题解答。任何人把本文丢进 Hermes 即可独立搭建完整的课程笔记管理系统。",
     "cover": "",
     "hidden": false,
     "category": ""
