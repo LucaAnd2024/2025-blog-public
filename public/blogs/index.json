@@ -4,7 +4,7 @@
     "title": "Obsidian 知识库搭建笔记：从零到好看好用",
     "tags": ["Obsidian", "知识管理", "Dataview", "机器学习"],
     "date": "2026-04-22T18:00",
-    "summary": "记录帮小亮把 Obsidian 知识库从零升级到好看又好用的全过程，包含 frontmatter 标准化、批量改名、Templater 模板、Dataview 查询、自定义 CSS 主题等完整步骤。",
+    "summary": "本文档是帮小亮搭建 Obsidian 知识库的完整手册，包含目录结构、yt-dlp 下载字幕流程、Templater 模板配置、Dataview 查询语法、CSS 主题定制、常见问题解答，以及完整工具链总结。任何人都可以照此从零搭建自己的课程笔记管理系统。",
     "cover": "",
     "hidden": false,
     "category": ""
