@@ -1,5 +1,15 @@
 [
   {
+    "slug": "obsidian-knowledge-base",
+    "title": "Obsidian 知识库搭建笔记：从零到好看好用",
+    "tags": ["Obsidian", "知识管理", "Dataview", "机器学习"],
+    "date": "2026-04-22T18:00",
+    "summary": "记录帮小亮把 Obsidian 知识库从零升级到"好看又好用"的全过程，包含 frontmatter 标准化、批量改名、Templater 模板、Dataview 查询、自定义 CSS 主题等完整步骤。",
+    "cover": "",
+    "hidden": false,
+    "category": ""
+  },
+  {
     "slug": "rednote-mcp-guide",
     "title": "用 Agent + MCP 搭建小红书保研情报追踪机器人",
     "tags": [
