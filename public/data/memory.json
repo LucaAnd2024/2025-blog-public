@@ -1,0 +1,32 @@
+[
+  {
+    "id": "2026-05-08-user-profile",
+    "name": "李佳亮的 Claude Code 使用习惯",
+    "description": "用户的沟通风格、技术偏好和工作方式",
+    "type": "user",
+    "tags": ["用户习惯", "工作方式", "技术栈"],
+    "content": "## 用户画像\n\n### 沟通风格\n- 偏好直接动手，不喜欢过多讨论\n- 喜欢简洁的交互\n- 使用中文沟通\n\n### 技术栈\n- 主语言：TypeScript, Next.js\n- 前端：Tailwind CSS\n- 部署：Cloudflare Pages\n- 博客地址：luca-wiki.tech\n- 项目目录：~/Projects/\n\n### 工具偏好\n- 使用 CC Switch 切换模型\n- 不需要登录验证（公开页面优先）\n\n### 当前项目\n- 2025-blog-public：个人博客\n- Luca_Claude：Claude Code 工作目录\n\n### 更新于\n2026-05-08",
+    "createdAt": "2026-05-08T15:50:00.000Z",
+    "updatedAt": "2026-05-08T15:50:00.000Z"
+  },
+  {
+    "id": "2026-05-08-memory-system",
+    "name": "记忆系统搭建记录",
+    "description": "claude_memory-system 的搭建过程和核心决策",
+    "type": "project",
+    "tags": ["记忆系统", "Next.js", "搭建过程"],
+    "content": "## 记忆系统搭建\n\n### 完成时间\n2026-05-08\n\n### 技术方案\n- 前端：Next.js API Route + React 页面\n- 数据存储：~/.claude_memory-system/memory.json\n- 管理页面：/memory（博客项目中）\n\n### 关键文件\n- API: src/app/api/memory/route.ts\n- 页面: src/app/memory/page.tsx\n- 导航入口: src/components/nav-card.tsx\n\n### 核心决策\n1. 不在首页导航栏添加入口，保持简洁\n2. 直接访问 /memory 使用管理页面\n3. 数据存储在用户主目录，便于跨项目共享\n4. 暂时不做网关功能，聚焦记忆系统本身\n\n### 依赖问题\n- npm install 需要加 --legacy-peer-deps\n- pnpm 环境未配置\n\n### 沉淀Skill\n- luca-memory-architect: 对话沉淀流程\n- claude-memory-system: 记忆系统说明",
+    "createdAt": "2026-05-08T16:00:00.000Z",
+    "updatedAt": "2026-05-08T16:00:00.000Z"
+  },
+  {
+    "id": "2026-05-08-feedback-style",
+    "name": "用户反馈风格",
+    "description": "用户如何给出反馈和纠正",
+    "type": "feedback",
+    "tags": ["反馈", "沟通"],
+    "content": "## 用户反馈风格\n\n### 正面反馈\n- 说\"可以\"、\"开始吧\"表示认可\n- 直接确认方向后希望立即执行\n\n### 纠正反馈\n- 指出问题时比较直接\n- 例如：\"你都没问我是哪个博客项目\"、\"你指的本地是电脑吗\"\n- 不喜欢我没有确认就擅自做决定\n\n### 偏好确认\n- 在行动前喜欢先确认方向\n- 喜欢被问\"要开始吗\"之类的确认问题",
+    "createdAt": "2026-05-08T15:55:00.000Z",
+    "updatedAt": "2026-05-08T15:55:00.000Z"
+  }
+]
